@@ -22,8 +22,8 @@ int main(int argc, char **argv)
         board.push_back(line);
 		height++;
 		
-		if (line.length()-1>width)
-			width = line.length()-1;
+		if (line.length()>width)
+			width = line.length();
 	}
 	
 	//write map
@@ -81,7 +81,7 @@ int main(int argc, char **argv)
 			}
 			else
 			{
-				map[current.x-1][current.y] = 'o';
+				map[current.x-1][current.y] = '-';
 				position temp;
 				temp.x = current.x-1;
 				temp.y = current.y;
@@ -92,7 +92,7 @@ int main(int argc, char **argv)
 		
 		/* x+1 ,y*/
 		if(map[current.x+1][current.y] == ' ' || map[current.x+1][current.y] == '.' && current.x+1 < width) {
-			if (map[current.x-1][current.y] == '.')
+			if (map[current.x+1][current.y] == '.')
 			{
 				current.x++;
 				current.path+="R";
@@ -100,7 +100,7 @@ int main(int argc, char **argv)
 			}
 			else
 			{
-				map[current.x+1][current.y] = 'o';
+				map[current.x+1][current.y] = '-';
 				position temp;
 				temp.x = current.x+1;
 				temp.y = current.y;
@@ -119,7 +119,7 @@ int main(int argc, char **argv)
 			}
 			else
 			{
-				map[current.x][current.y-1] = 'o';
+				map[current.x][current.y-1] = '|';
 				position temp;
 				temp.x = current.x;
 				temp.y = current.y-1;
@@ -139,7 +139,7 @@ int main(int argc, char **argv)
 			}
 			else
 			{
-				map[current.x][current.y+1] = 'o';
+				map[current.x][current.y+1] = '|';
 				position temp;
 				temp.x = current.x;
 				temp.y = current.y+1;
